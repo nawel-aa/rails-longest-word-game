@@ -11,7 +11,12 @@ class GamesController < ApplicationController
   def score
     return @result = :wrong_letters unless word_uses_letters?
 
-    @result = word_exists? ? :won : :wrong_word
+    if word_exists?
+      @result = :won
+      cookies[:score] = cookies[:score].to_i + params[:word].split('').count
+    else
+      @result = :wrong_word
+    end
   end
 
   private
