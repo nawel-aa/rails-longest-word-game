@@ -1,0 +1,19 @@
+<h1>Result</h1>
+<p>
+  <%
+  case @result
+  when :wrong_letters
+  %>
+    Sorry but <strong><%=params[:word].upcase%></strong> can't be built out of <%=params[:letters].split(' ').join(', ')%>
+  <%
+  when :wrong_word
+  %>
+    Sorry but <strong><%=params[:word].upcase%></strong> does not seem to be a valid English word...
+  <%
+  else
+  %>
+    <strong>Congratulations!</strong> <%=params[:word].upcase%> is a valid English word!
+  <%
+  end
+  %>
+</p>
